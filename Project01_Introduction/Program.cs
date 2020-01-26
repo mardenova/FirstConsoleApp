@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Project01_Introduction
 {
@@ -60,6 +61,7 @@ namespace Project01_Introduction
             int c = 5;
             int s = (a + b + c) / 2;
             double area = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
+            Console.WriteLine("The area is equal to: " + area);
 
 
 
@@ -97,17 +99,17 @@ namespace Project01_Introduction
             // Input a number (n) from the user and check if it is even or odd.
 
             // Write your code here
-            Console.WriteLine("Please enter a number");
+            Console.WriteLine("Please enter a number for exercise 2:");
             string numberInput = Console.ReadLine();
             int exNumber = Convert.ToInt32(numberInput);
             int diff = exNumber % 2;
-            if (exNumber == 1)
+            if (diff == 1)
             {
-                Console.WriteLine("Odd");
+                Console.WriteLine("The number is Odd");
             }
             else
             {
-                Console.WriteLine("Even");
+                Console.WriteLine("The number is Even");
             }
 
 
@@ -116,7 +118,7 @@ namespace Project01_Introduction
             // Input 3 numbers from the user (x,y,z) and find the greatest of them.
 
             // Write your code here
-            Console.WriteLine("Please enter 3 integers");
+            Console.WriteLine("Please enter 3 integers:");
             string userInput1 = Console.ReadLine();
             string userInput2 = Console.ReadLine();
             string userInput3 = Console.ReadLine();
@@ -130,7 +132,7 @@ namespace Project01_Introduction
             }
             else
             {
-                if(y > z)
+                if (y > z)
                 {
                     result = y;
                 }
@@ -139,7 +141,7 @@ namespace Project01_Introduction
                     result = z;
                 }
             }
-            Console.WriteLine(result);
+            Console.WriteLine("The greatest number is: " + result);
 
 
 
@@ -174,16 +176,16 @@ namespace Project01_Introduction
             // Eg. n=5. sum = 1+2+3+4+5 = 15
 
             // Write your code here
-            Console.WriteLine("Please enter a number:");
+            Console.WriteLine("Please enter a number for exercise 4:");
             string usrInput = Console.ReadLine();
             int n = Convert.ToInt32(usrInput);
             int res = 0;
             while (n > 0)
             {
-                res = +n;
-                n = -1;
+                res += n;
+                n -= 1;
             }
-            Console.WriteLine(res);
+            Console.WriteLine("The sum of first n natural numbers is: " + res);
 
 
 
@@ -198,14 +200,14 @@ namespace Project01_Introduction
             // *****
 
             // Write your code here
-            Console.WriteLine("Please enter a value:");
+            Console.WriteLine("Please enter a value for exercise 5:");
             string valueInput = Console.ReadLine();
             int nValue = Convert.ToInt32(valueInput);
-            int star = 1;
-            while (star <= nValue)
+            int f = 1;
+            while (f <= nValue)
             {
-                Console.WriteLine("*");
-                star = +1;
+                Console.WriteLine(String.Concat(Enumerable.Repeat("*", f)));
+                f += 1;
             }
 
 
@@ -221,6 +223,21 @@ namespace Project01_Introduction
             // *****
 
             // Write your code here
+            Console.WriteLine("Please enter a value for exercise 6:");
+            string vInput = Console.ReadLine();
+            int m = Convert.ToInt32(vInput);
+            for (int i = 1; i <= m; i++)
+            {
+                Console.WriteLine();
+                for (int j = 1; j <= m - i; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (int d = 1; d <= i; d++)
+                {
+                    Console.Write("*");
+                }
+            }
 
 
 
@@ -235,18 +252,20 @@ namespace Project01_Introduction
             // Write a method that accepts a parameter (n) and returns the sum of first n natural numbers.
 
             // Write your code here
+            Console.WriteLine("Please enter a parameter for exercise 7:");
             int methodValue = Convert.ToInt32(Console.ReadLine());
-            int methodResults = ReturnSumOfValues(methodValue);
+            int methodRes = ReturnSumOfValues(methodValue);
             int ReturnSumOfValues(int mValue)
             {
-                int methodRes=0;
+                int methodRes = 0;
                 while (mValue > 0)
                 {
-                    methodRes = +mValue;
-                    mValue = -1;
+                    methodRes += mValue;
+                    mValue -= 1;
                 }
                 return methodRes;
             }
+            Console.WriteLine("The sum of first n natural numbers is: " + methodRes);
 
 
 
@@ -264,22 +283,21 @@ namespace Project01_Introduction
 
             // Write your code here
             int[] numbers = new int[] { 1, 4, 5, 12, 34, 36, 39, 41, 55, 58, 90 };
+            Console.WriteLine("All even numbers in the array are: ");
             for (int i = 0; i < 11; i++)
             {
                 if (numbers[i] % 2 == 0)
                 {
                     Console.WriteLine(numbers[i]);
                 }
-                else
-                {
-
-                }
             }
             // Exercise 9
             // Enter n numbers in an array and find the highest and the smallest number.
 
             // Write your code here
-
+            int[] numArray = new int[] { 2, 4, 6, 1, 10, 9, 22, 3 };
+            Array.Sort(numArray);
+            Console.WriteLine("The smallest number in the array is: " + numArray.First() + ". " + "The highest number in the array is: " + numArray.Last());
         }
 
         static decimal ComputeTaxes(decimal income)
